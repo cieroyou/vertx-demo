@@ -18,7 +18,11 @@ public class MainVerticle extends AbstractVerticle {
                 .respond(
                         ctx -> Future.succeededFuture(new JsonObject().put("hello", "world")));
 
-  
+        router.get("/person")
+                .respond(
+                        ctx -> Future.succeededFuture(new ResponseDto("sera", 33)));
+
+
         router.route("/users/*").handler(UserHandler.create(vertx, router));
 //    router.route().handler(context -> {
 //      String address = context.request().connection().remoteAddress().toString();
